@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    
+
+    <script>
+        //...  扩展运算符也能将数组转换为逗号分隔参数序列
+        //声明一个数组
+        const Arr = ["唐家三少","天蚕土豆"];
+
+        //声明一个数组
+        function fn(){
+            console.log(arguments);
+        }
+
+        fn(...Arr);//Arguments(2) ["唐家三少", "天蚕土豆", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+
+    //扩展运算符的运用
+        //1.数组的合并
+            const kuaizi = ["王太利","肖央"];
+            const fenghuang = ["曾毅","玲花"];
+
+            //es5
+            const zuixuanxiaopingguo = kuaizi.concat(fenghuang);
+            console.log(zuixuanxiaopingguo);//(4) ["王太利", "肖央", "曾毅", "玲花"]
+
+            //es6
+            const zuixuanxiaopingguo2 = [...kuaizi, ...fenghuang];
+            console.log(zuixuanxiaopingguo2);//(4) ["王太利", "肖央", "曾毅", "玲花"]
+
+
+        //2.数组的克隆
+            const sanzhihua = ["E","G","M"];
+            const sanyecao = [...sanzhihua];
+            console.log(sanyecao);//(3) ["E", "G", "M"]
+
+
+        //2.将伪数组转为真正的数组
+            const divs = document.querySelectorAll("div");
+            const divArr = [...divs];
+            console.log(divArr);//(3) [div, div, div]
+
+    </script>
+</body>
+</html>

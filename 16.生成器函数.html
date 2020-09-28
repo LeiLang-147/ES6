@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            生成器其实就是一个特殊的函数
+                异步编程  纯回调函数  node  fs  ajax  MongoDB
+         */
+        
+        function * gen(){
+            //console.log("hello generator");
+            yield '一直没有耳朵';
+            //console.log("hello generator");
+            yield '一直没有尾巴';
+            //console.log("hello generator");
+            yield '真奇怪';
+            //console.log("hello generator");
+        }
+        let iterator = gen();
+       // console.log(iterator);//返回结果是一个迭代器对象
+       // iterator.next();//hello generator
+       // iterator.next();//hello generator     hello generator 
+       // iterator.next();//hello generator     hello generator     hello generator     
+        //iterator.next();//hello generator     hello generator     hello generator     hello generator 
+
+        /* 
+            函数代码的分隔符yield，这里
+                调用一次iterator.next(); 只会输出一个hello generator 
+                调用两次次iterator.next(); 会输出两个hello generator 
+                调用三次次iterator.next(); 会输出三个hello generator 
+                调用四次次iterator.next(); 会输出全部四个hello generator 
+        */
+
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        /* 
+            输出
+                {value: "一直没有耳朵", done: false}
+                {value: "一直没有尾巴", done: false}
+                {value: "真奇怪", done: false}
+                {value: undefined, done: true}
+         */
+
+        //遍历
+        for(let v of gen()){
+            console.log(v);
+        }
+        /* 
+            输出：
+                hello generator
+                一直没有耳朵
+                hello generator
+                一直没有尾巴
+                hello generator
+                真奇怪
+                hello generator
+         */
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //迭代器(iterator)是一种接口，为各种不同的数据结构提供统一的访问机制，
+        //任何数据类型只要部署iterator接口（就是对象里面的一个属性），就可以完成遍历操作
+        //ES6 创造了一种新的遍历命令for...of循环，iterator接口主要供for...of消费
+
+
+        //声明一个数组
+        const xiyou = ['唐僧','孙悟空','猪八戒','沙僧'];
+
+        //使用for...in遍历
+        for(let v in xiyou){
+            console.log(v);// 0  1  2  3
+        }
+
+        //使用for...of遍历
+        for(let x of xiyou){
+            console.log(x);//唐僧  孙悟空  猪八戒  沙僧
+        }
+
+
+        //遍历的机制
+        //首先创建一个指针对象，然后调用next函数，
+        let iterator = xiyou[Symbol.iterator]();
+        console.log(iterator.next());//{value: "唐僧", done: false}
+        console.log(iterator.next());//{value: "孙悟空", done: false}
+        console.log(iterator.next());//{value: "猪八戒", done: false}
+        console.log(iterator.next());//{value: "沙僧", done: false}
+        console.log(iterator.next());//{value: undefined, done: true} 当done: true时，遍历完成
+
+
+    </script>
+</body>
+</html>

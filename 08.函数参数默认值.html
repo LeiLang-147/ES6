@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //ES6 允许给函数参数赋值初始值
+
+        //1.形参的初始值 具有默认值的参数，位置一般要靠后(潜规则)
+        //c 传了实参的话，就使用实参，没传就用形参赋值的初始值
+        function add(a,b,c=10){
+            return a+b+c;
+        }
+        let res = add(1,2);
+        console.log(res);
+
+
+
+        //2.与解构赋值结合
+        /* function connect(option){
+            let host = option.host;
+            let username = option.username;
+            let passward = option.passward;
+            let port = option.port;
+            console.log(host, username, passward, port);
+        } */
+        //传了值就用，没传就用默认值（形参赋值的初始值）
+        function connect({host, username, passward=123456, port}){
+            console.log(host, username, passward, port);
+        }
+        connect({
+            host:"localhost",
+            username:"root",
+            passward:"root",
+            port:3306
+        });
+
+
+
+
+    </script>
+</body>
+</html>

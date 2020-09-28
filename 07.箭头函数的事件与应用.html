@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="ad"></div>
+    <script>
+        //需求1 点击div，2s后颜色变成粉色
+        var ad = document.getElementById("ad");
+        ad.addEventListener("click", function(){
+           /*  let _this = this;
+            //console.log(this);//div
+            let timer = setInterval(function(){
+                //console.log(this);//window
+                _this.style.background = "pink";
+                clearInterval(timer);
+            },2000); */
+
+            let timer = setInterval(() =>{
+                this.style.background = "pink";
+                clearInterval(timer);
+            }, 2000);
+        });
+
+
+
+        //需求2 从数组中返回偶数的元素
+        const ARR = [1,6,9,10,100,25];
+        //匿名函数
+        /* const RES = ARR.filter(function(item){
+            if(item % 2 === 0){
+                return true;
+            }else{
+                return false;
+            }
+        }); */
+        //箭头函数
+        /* const RES = ARR.filter((item) => {
+            if(item % 2 === 0){
+                return true;
+            }else{
+                return false;
+            }
+        }); */
+        //箭头函数简写
+        const RES = ARR.filter(item => item % 2 === 0)
+        console.log(RES);
+
+        //箭头函数适合与this无关的回调。 定时器，数组的方法回调
+        //箭头函数不适合于this有关的回调。 DOM事件回调，对象的方法
+
+
+
+
+    </script>
+</body>
+</html>

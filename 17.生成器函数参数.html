@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function * gen(arg){
+            console.log(arg);
+            let one = yield 111;
+            console.log(one);
+            yield 222;
+            yield 333;
+        }
+
+        //执行获取迭代器对象
+        let iterator = gen('AAA');
+        console.log(iterator.next());//{value: 111, done: false}
+        //给next方法传的实参，会作为yield的返回值
+        console.log(iterator.next("BBB"));//{value: 222, done: false}
+        console.log(iterator.next());//{value: 333, done: false}
+        console.log(iterator.next());//{value: undefined, done: true}
+
+
+
+
+    </script>
+</body>
+</html>
